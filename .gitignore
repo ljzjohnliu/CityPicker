@@ -33,12 +33,33 @@ captures/
   
 # Intellij
 *.iml
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/libraries
+.idea
 
 # Keystore files
 *.jks
 
 # External native build folder generated in Android Studio 2.2 and later
-.externalNativeBuild  
+.externalNativeBuild
+
+.classpath
+.project
+.settings
+eclipsebin
+
+gen
+target
+pom.xml.*
+release.properties
+
+.gitmodules
+*.ipr
+*.iws
+classes
+*.apk
+
+obj
+
+.DS_Store
+
+screenMatch.properties
+screenMatch_example_dimens.xml
