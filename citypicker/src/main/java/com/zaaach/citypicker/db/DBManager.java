@@ -116,6 +116,25 @@ public class DBManager {
         return result;
     }
 
+    public City getCityByName(final String cityStr) {
+        String sql = "select * from " + TABLE_NAME + " where "
+                + COLUMN_C_NAME + " like ? ";
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + LATEST_DB_NAME, null);
+        Cursor cursor = db.rawQuery(sql, new String[]{"%" + cityStr + "%"});
+
+        City city = null;
+        if (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex(COLUMN_C_NAME));
+            String province = cursor.getString(cursor.getColumnIndex(COLUMN_C_PROVINCE));
+            String pinyin = cursor.getString(cursor.getColumnIndex(COLUMN_C_PINYIN));
+            String code = cursor.getString(cursor.getColumnIndex(COLUMN_C_CODE));
+            city = new City(name, province, pinyin, code);
+        }
+        cursor.close();
+        db.close();
+        return city;
+    }
+
     /**
      * sort by a-z
      */
